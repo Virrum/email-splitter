@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Email splitter</title>
+    <!-- Compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <link rel="stylesheet" href="main.css" />
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  </head>
+  <body>
+    <main id="app" class="container">
+      <div class="row">
+        <div class="col s12">
+          <h1>Split your emails</h1>
+        </div>
+        <div class="col s12 m6">
+          <div class="input-field">
+            <textarea
+              class="materialize-textarea grey-text text-darken-1"
+              v-model="emailsIn"
+              name="emailsInput"
+              id="emailsInput"
+            ></textarea>
+            <label for="emailsInput">Paste your mailing list here.</label>
+          </div>
+
+          <button v-on:click="clearNames" class="waves-effect waves-light btn">
+            Clear names
+          </button>
+          <p class="grey-text text-darken-2">
+            Expected format: <br />
+            <em
+              >Firstname Lastname &lt;some.name@email.com&gt;; Firstname2
+              Lastname2 &lt;some.name@email.com&gt;; ...
+            </em>
+          </p>
+        </div>
+        <div class="col s12 m6" v-if="emailsOut">
+          <div class="input-field">
+            <textarea
+              v-model="emailsOut"
+              class="materialize-textarea grey-text text-darken-1"
+              name="emailsOutput"
+              id="emailsOutput"
+              cols="30"
+              rows="10"
+            ></textarea>
+            <label for="emailsOutput">Copy output</label>
+          </div>
+          <button v-on:click="copyOutput" class="waves-effect waves-light btn">
+            Copy emails
+          </button>
+        </div>
+      </div>
+    </main>
+    <script src="main.js"></script>
+  </body>
+</html>
